@@ -1,20 +1,27 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { toast } from 'react-toastify'
 
 const Register = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    axios.post('/register', {
-      name,
-      email,
-      password
-    })
-    //axios.get('http://localhost:4000/test')
+    try {
+      await axios.post('/register', {
+        name,
+        email,
+        password
+      })
+      toast.success('Registration successful');
+    } catch (error) {
+        console.log(error);
+      toast.error('Registration failed')
+      alert('not successful')
+    }
   }
 
   return (
@@ -39,7 +46,7 @@ const Register = () => {
               onChange = {e => setPassword(e.target.value)} />
             <button className="primary">Register</button>
             <div className="text-center py-2 text-gray-500">
-              Already have an account? <Link to="/login" className="underline text-black">Register Now</Link>
+              Already have an account? <Link to="/login" className="underline text-black">Login Now</Link>
             </div>
           </form>
        </div>
