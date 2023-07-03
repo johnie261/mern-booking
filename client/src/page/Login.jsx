@@ -42,7 +42,7 @@ const Login = () => {
               onChange = {e => setPassword(e.target.value)} />
             <button className="primary">Login</button>
             <div className="text-center py-2 text-gray-500">
-              Dont have an account yet? <Link to="/register" className="underline text-black">Register Now</Link>
+              Don't have an account yet? <Link to="/register" className="underline text-black">Register Now</Link>
             </div>
           </form>
        </div>
